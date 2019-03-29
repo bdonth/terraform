@@ -8,7 +8,7 @@ provider "aws" {
 resource "aws_instance" "demoinstance" {
   ami = "ami-0ad42f4f66f6c1cc9"
   instance_type = "t2.micro"
-  key_name = "gopall"
+  key_name = "${var.keyname}"
   vpc_security_group_ids = ["${aws_security_group.instance.id}"]
   user_data = <<-EOF
              #!/bin/bash
