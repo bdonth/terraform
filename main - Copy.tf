@@ -14,7 +14,7 @@ resource "aws_instance" "demoinstance" {
              #!/bin/bash
              sudo yum install httpd -y
              service httpd restart
-             echo "Hello, World" > /var/www/html/index.html  
+             echo "Hello, World" > /var/www/html/index.html
              EOF
 
   tags {
@@ -25,7 +25,7 @@ resource "aws_instance" "demoinstance" {
 
 resource "aws_security_group" "instance" {
   name = "terraform-example-instance"
- 
+
   egress {
     from_port = 0
     to_port = 0
@@ -37,7 +37,6 @@ resource "aws_security_group" "instance" {
     from_port = "${var.server_port}"
     to_port = "${var.server_port}"
     protocol = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = ["10.20.0.10/20"]
   }
 }
-
